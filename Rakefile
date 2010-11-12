@@ -31,6 +31,7 @@ task :install_irbrc do |t|
 end
 
 task :update_vim_bundles do |t|
+  #http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
   git_bundles = [
     "git://github.com/tpope/vim-cucumber.git",
     "git://github.com/tpope/vim-fugitive.git",
@@ -44,9 +45,6 @@ task :update_vim_bundles do |t|
     "git://github.com/tpope/vim-ragtag.git",
     "git://github.com/tpope/vim-endwise.git"
   ]
-
-  require 'fileutils'
-  require 'open-uri'
 
   bundles_dir = File.expand_path("~/.vim/bundle")
   FileUtils.cd(bundles_dir)

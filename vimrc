@@ -74,14 +74,6 @@ set laststatus=2
 " \ is the leader character
 let mapleader = "\\"
 
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -92,9 +84,6 @@ vmap D y'>p
 
 " No Help, please
 nmap <F1> <Esc>
-
-" Press ^F from insert mode to insert the current file name
-imap <C-F> <C-R>=expand("%")<CR>
 
 " Press Shift+P while in visual mode to replace the selection without
 " overwriting the default register
@@ -108,11 +97,6 @@ if filereadable(".vimrc.local")
   source .vimrc.local
 endif
 
-" Use Ack instead of Grep when available
-if executable("ack")
-  set grepprg=ack\ -H\ --nogroup\ --nocolor
-endif
-
 " Color scheme
 colorscheme vividchalk
 highlight NonText guibg=#060606
@@ -121,9 +105,6 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 " Numbers
 set number
 set numberwidth=5
-
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
