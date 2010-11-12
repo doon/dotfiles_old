@@ -11,7 +11,6 @@ if [ `uname ` = 'Linux' ];then
    alias ls='ls --color=auto'
 fi
 alias ipcalc='ipcalc -n -b'
-alias m='mate app config lib db schema public spec test vendor/gems vendor/plugins Rakefile Capfile README features doc'
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
@@ -23,9 +22,10 @@ alias gba='git branch -a'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
 #try to alias vi to vim on boxes where they are different FBSD|OSX 
-if [[ -x /Applications/MacVim.app/Contents/MacOS/Vim ]] ; then 
-  alias vi="/Applications/MacVim.app/Contents/MacOS/Vim" 
-elif [[ -x /usr/local/bin/vim ]]; then 
+if [[ -x /Applications/MacVim.app/Contents/MacOS/Vim ]] ; then
+  alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
+elif [[ -x /usr/local/bin/vim ]]; then
   alias vi="/usr/local/bin/vim"
 fi
