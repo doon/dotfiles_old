@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => [:install_vim, :install_zsh, :install_vcs, :install_irbrc]
+task :default => [:install_vim, :install_zsh, :install_vcs, :install_irbrc, :update_vim_bundles ]
 
 task :install_vim do |t|
   vimdir = File.expand_path("~/.vim")
