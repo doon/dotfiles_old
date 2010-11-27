@@ -45,7 +45,7 @@ task :update_vim_bundles do |t|
     "git://github.com/tpope/vim-ragtag.git",
     "git://github.com/tpope/vim-endwise.git"
   ]
-
+  rake_dir = Dir.getwd
   bundles_dir = File.expand_path("~/.vim/bundle")
   FileUtils.cd(bundles_dir)
 
@@ -59,4 +59,6 @@ task :update_vim_bundles do |t|
     FileUtils.rm_rf(File.join(dir, ".git"))
   end
 
+  puts "copying local bundles over"
+  FileUtils.cp_r("#{rake_dir}/_vim_bundles/.", bundles_dir)
 end
