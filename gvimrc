@@ -1,5 +1,8 @@
 " Font
-set guifont=Mensch\ Regular:h11
+
+if has("gui_macvim")
+  set guifont=Mensch\ Regular:h12
+endif
 "set guifont=Inconsolata\ Medium\ 12
 " No audible bell
 set vb
