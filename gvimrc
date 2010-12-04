@@ -2,6 +2,8 @@
 
 if has("gui_macvim")
   set guifont=Mensch\ Regular:h12
+elseif has("gui_gtk2")
+  set guifont=Mensch\ 10
 endif
 "set guifont=Inconsolata\ Medium\ 12
 " No audible bell
