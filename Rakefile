@@ -47,6 +47,8 @@ task :update_vim_bundles do |t|
   ]
   rake_dir = Dir.getwd
   bundles_dir = File.expand_path("~/.vim/bundle")
+  mkdir(bundles_dir) unless File.exists?(bundles_dir)
+
   FileUtils.cd(bundles_dir)
 
   puts "Trashing everything (lookout!)"
