@@ -60,5 +60,9 @@ setopt hist_save_no_dups
 #we want to run features/spec in autotest
 export AUTOFEATURE=true
 export RSPEC=true
-
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+#check to see if rvm is installed system wide 
+if [[ -s /usr/local/lib/rvm ]]; then
+  source /usr/local/lib/rvm 
+else
+  if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+fi
