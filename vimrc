@@ -57,9 +57,7 @@ if has("autocmd")
   augroup END
 
 else
-
   set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
 
 " Softtabs, 2 spaces
@@ -71,8 +69,8 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
-" \ is the leader character
-let mapleader = "\\"
+" , is the leader character
+let mapleader = ","
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -105,6 +103,10 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 " Numbers
 set number
 set numberwidth=5
+set relativenumber
+
+" allow background buffers w/o saving
+set hidden
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
@@ -112,9 +114,33 @@ set completeopt=longest,menu
 set wildmode=list:longest,list:full
 set complete=.,t
 
+" Remap the tab key to do autocompletion or indentation depending on the
+" context (from http://www.vim.org/tips/tip.php?tip_id=102)
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
 " case only matters with mixed case expressions
 set ignorecase
 set smartcase
 
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+" set the command height
+set cmdheight=2
+
+augroup myfiletypes
+  "clear old autocmds in group
+  autocmd!
+  "for ruby, autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass set ai sw=2 sts=2 et
+  autocmd FileType python set sw=4 sts=4 et
+augroup END
+
