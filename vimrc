@@ -101,9 +101,12 @@ highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Numbers
-set number
 set numberwidth=5
-set relativenumber
+if version < 730
+  set relativenumber
+else
+  set number
+endif
 
 " allow background buffers w/o saving
 set hidden
