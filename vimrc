@@ -102,12 +102,10 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Numbers
 set numberwidth=5
-if version > 730
+if exists("&relativenumber")
+  set nonumber
   set relativenumber
-else
-  set number
 endif
-
 " allow background buffers w/o saving
 set hidden
 
