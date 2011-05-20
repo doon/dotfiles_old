@@ -33,7 +33,7 @@ if [ -e "$HOME/.aliases" ]; then
 fi
 
 # emacs mode
-bindkey -v
+bindkey -e
 
 # use incremental search
 bindkey ^R ^R ^R history-incremental-search-backward
@@ -60,9 +60,4 @@ setopt hist_save_no_dups
 #we want to run features/spec in autotest
 export AUTOFEATURE=true
 export RSPEC=true
-#check to see if rvm is installed system wide 
-if [[ -s /usr/local/lib/rvm ]]; then
-  source /usr/local/lib/rvm 
-else
-  if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-fi
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
