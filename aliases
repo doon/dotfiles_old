@@ -10,7 +10,7 @@ alias ll='ls -l'
 if [ `uname ` = 'Linux' ];then
    alias ls='ls --color=auto'
 fi
-alias ipcalc='ipcalc -n -b'
+alias ipcalc='ipcalc -b'
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
