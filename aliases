@@ -28,4 +28,6 @@ if [[ -x /Applications/MacVim.app/Contents/MacOS/Vim ]] ; then
   alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
 elif [[ -x /usr/local/bin/vim ]]; then
   alias vi="/usr/local/bin/vim"
+elif [[ -x /usr/local/bin/mvim ]]; then
+  alias vi="/usr/local/bin/mvim -v"
 fi
