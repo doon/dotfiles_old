@@ -127,7 +127,7 @@ function! InsertTabWrapper()
     return "\<c-p>"
   endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <silent> <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
 " case only matters with mixed case expressions
