@@ -38,6 +38,8 @@ task :update_vim_bundles do |t|
     "git://github.com/tpope/vim-git.git",
     "git://github.com/tpope/vim-haml.git",
     "git://github.com/tpope/vim-rails.git",
+    "git://github.com/tpope/vim-rake.git",
+    "git://github.com/tpope/vim-bundler.git",
     "git://github.com/tpope/vim-repeat.git",
     "git://github.com/tpope/vim-surround.git",
     "git://github.com/tpope/vim-vividchalk.git",
