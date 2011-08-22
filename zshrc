@@ -60,4 +60,5 @@ setopt hist_save_no_dups
 #we want to run features/spec in autotest
 export AUTOFEATURE=true
 export RSPEC=true
+PATH=/usr/local/bin:$PATH; export PATH
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
