@@ -24,9 +24,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 #try to alias vi to vim on boxes where they are different FBSD|OSX 
-if [[ -x /Applications/MacVim.app/Contents/MacOS/Vim ]] ; then
-  alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
-elif [[ -x /usr/local/bin/vim ]]; then
+if [[ -x /usr/local/bin/vim ]]; then
   alias vi="/usr/local/bin/vim"
 elif [[ -x /usr/local/bin/mvim ]]; then
   alias vi="/usr/local/bin/mvim -v"
