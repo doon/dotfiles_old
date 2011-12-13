@@ -1,8 +1,9 @@
 " Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+" default to utf-8
+set encoding=utf-8
+" load pathogen
+call pathogen#infect()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -13,12 +14,8 @@ set history=50    " keep 50 lines of command line history
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" default to utf-8, regardless of LANG
-set encoding=utf-8
+set ignorecase    " ignore case when searching
+set smartcase     " unless we have at least 1 cap
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -33,10 +30,6 @@ endif
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -46,52 +39,53 @@ if has("autocmd")
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+  " treat json as javascript
+  au BufNewFile,BufRead *.json set ft=javascript
+
+  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal! g`\"" | endif
 
   augroup END
-
-else
-  set autoindent		" always set autoindenting on
-endif " has("autocmd")
+endif
 
 " Softtabs, 2 spaces
-set tabstop=2
+set tabstop=2 shiftwidth=2
 set smarttab
-set shiftwidth=2
 set expandtab
+set list listchars=tab:»·,trail:·
 
+
+" disable cursor keys in normal mode
+map <Left>  :echo "no!"<cr>
+map <Right> :echo "no!"<cr>
+map <Up>    :echo "no!"<cr>
+map <Down>  :echo "no!"<cr>
+
+if has("statusline") && !&cp
 " Always display the status line
-set laststatus=2
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+  set laststatus=2
+  set statusline=%f\ %m\ %r\ \ 
+  set statusline+=Line:%l/%L[%p%%]\ 
+  set statusline+=Col:%v\ 
+  set statusline+=Buf:#%n\ 
+  set statusline+=%{fugitive#statusline()}
+  " Finish the statusline
+  " old:: set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+endif
 
 " , is the leader character
 let mapleader = ","
 
-" Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Duplicate a selection
-" Visual mode: D
-vmap D y'>p
-
 " No Help, please
 nmap <F1> <Esc>
 
-" Press Shift+P while in visual mode to replace the selection without
-" overwriting the default register
-vmap P p :call setreg('"', getreg('0')) <CR>
+" easier navigation between split windows
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
-" Display extra whitespace
-set list listchars=tab:»·,trail:·
-
-" Local config
+"Local config
 if filereadable(".vimrc.local")
   source .vimrc.local
 endif
@@ -131,12 +125,6 @@ endfunction
 inoremap <silent> <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-" case only matters with mixed case expressions
-set ignorecase
-set smartcase
-
-" Tags
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " set the command height
 set cmdheight=2
 

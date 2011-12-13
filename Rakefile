@@ -33,23 +33,19 @@ end
 task :update_vim_bundles do |t|
   #http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
   git_bundles = [
-    "git://github.com/tpope/vim-cucumber.git",
     "git://github.com/tpope/vim-fugitive.git",
     "git://github.com/tpope/vim-git.git",
     "git://github.com/tpope/vim-haml.git",
     "git://github.com/tpope/vim-rails.git",
     "git://github.com/tpope/vim-rake.git",
     "git://github.com/tpope/vim-bundler.git",
-    "git://github.com/tpope/vim-repeat.git",
     "git://github.com/tpope/vim-surround.git",
     "git://github.com/tpope/vim-vividchalk.git",
     "git://github.com/tpope/vim-unimpaired.git",
     "git://github.com/tpope/vim-ragtag.git",
     "git://github.com/tpope/vim-endwise.git",
-    "git://github.com/tsaleh/vim-align.git",
     "git://github.com/mileszs/ack.vim.git",
     "git://github.com/kchmck/vim-coffee-script.git",
-    "git://github.com/csexton/rvm.vim.git",
     "git://github.com/tpope/vim-commentary.git"
   ]
   rake_dir = Dir.getwd
