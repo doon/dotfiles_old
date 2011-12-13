@@ -64,6 +64,6 @@ task :update_vim_bundles do |t|
     FileUtils.rm_rf(File.join(dir, ".git"))
   end
 
-  puts "copying local bundles over"
-  FileUtils.cp_r("#{rake_dir}/_vim_bundles/.", bundles_dir)
+  #puts "copying local bundles over"
+  #FileUtils.cp_r("#{rake_dir}/_vim_bundles/.", bundles_dir)
 end
