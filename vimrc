@@ -56,10 +56,10 @@ set list listchars=tab:»·,trail:·
 
 
 " disable cursor keys in normal mode
-map <Left>  :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up>    :echo "no!"<cr>
-map <Down>  :echo "no!"<cr>
+map <Left>  :echo "Bad Doon: use h!"<cr>
+map <Right> :echo "Bad Doon: use l!"<cr>
+map <Up>    :echo "Bad Doon: use k!"<cr>
+map <Down>  :echo "Bad Doon: use j!"<cr>
 
 if has("statusline") && !&cp
 " Always display the status line
