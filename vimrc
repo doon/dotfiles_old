@@ -29,7 +29,6 @@ endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
   filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -41,7 +40,7 @@ if has("autocmd")
 
   " treat json as javascript
   au BufNewFile,BufRead *.json set ft=javascript
-
+  " go to last edit in file unless it is a git commit message
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
       \| exe "normal! g`\"" | endif
 
@@ -53,7 +52,6 @@ set tabstop=2 shiftwidth=2
 set smarttab
 set expandtab
 set list listchars=tab:»·,trail:·
-
 
 " disable cursor keys in normal mode
 map <Left>  :echo "Bad Doon: use h!"<cr>
@@ -69,8 +67,6 @@ if has("statusline") && !&cp
   set statusline+=Col:%v\ 
   set statusline+=Buf:#%n\ 
   set statusline+=%{fugitive#statusline()}
-  " Finish the statusline
-  " old:: set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
 endif
 
 " , is the leader character
@@ -85,24 +81,21 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-"Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
-endif
-
 " Color scheme
-colorscheme vividchalk
+colorscheme solarized
+set background=dark
 
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
+"highlight NonText guibg=#060606
+"highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Numbers
-set numberwidth=5
-set number
+set numberwidth=4
 if exists("&relativenumber")
-  set nonumber
   set relativenumber
+else
+  set number
 endif
+
 " allow background buffers w/o saving
 set hidden
 
@@ -110,7 +103,7 @@ set hidden
 " (only complete to the longest unambiguous match, and show a menu)
 set completeopt=longest,menu
 set wildmode=list:longest,list:full
-set complete=.,t
+set complete=,t
 
 " Remap the tab key to do autocompletion or indentation depending on the
 " context (from http://www.vim.org/tips/tip.php?tip_id=102)
@@ -136,3 +129,7 @@ augroup myfiletypes
   autocmd FileType python set sw=4 sts=4 et
 augroup END
 
+"Local config
+if filereadable(".vimrc.local")
+  source .vimrc.local
+endif
