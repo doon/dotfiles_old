@@ -103,7 +103,7 @@ set hidden
 " (only complete to the longest unambiguous match, and show a menu)
 set completeopt=longest,menu
 set wildmode=list:longest,list:full
-set complete=,t
+set complete=.,t
 
 " Remap the tab key to do autocompletion or indentation depending on the
 " context (from http://www.vim.org/tips/tip.php?tip_id=102)
