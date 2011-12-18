@@ -62,11 +62,11 @@ map <Down>  :echo "Bad Doon: use j!"<cr>
 if has("statusline") && !&cp
 " Always display the status line
   set laststatus=2
-  set statusline=%f\ %m\ %r\ \ 
+  set statusline=%f\ %m\ %r\ %y\ \ 
   set statusline+=Line:%l/%L[%p%%]\ 
   set statusline+=Col:%v\ 
   set statusline+=Buf:#%n\ 
-  set statusline+=%{fugitive#statusline()}
+  set statusline+=%=%{fugitive#statusline()}\ \ \ 
 endif
 
 " , is the leader character
