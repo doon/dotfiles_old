@@ -66,7 +66,9 @@ if has("statusline") && !&cp
   set statusline+=Line:%l/%L[%p%%]\ 
   set statusline+=Col:%v\ 
   set statusline+=Buf:#%n\ 
-  set statusline+=%=%{fugitive#statusline()}\ \ \ 
+  set statusline+=%=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+  set statusline+=%{&ff}]\ 
+  set statusline+=%{fugitive#statusline()}\ \ \ 
 endif
 
 " , is the leader character
