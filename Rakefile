@@ -34,7 +34,8 @@ task :update_vim_bundles do |t|
   #http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
   git_bundles = [
     "git://github.com/tpope/vim-fugitive.git",
-    "git://github.com/tpope/vim-rails.git"
+    "git://github.com/tpope/vim-rails.git",
+    "git://github.com/altercation/vim-colors-solarized"
   ]
   rake_dir = Dir.getwd
   bundles_dir = File.expand_path("~/.vim/bundle")
