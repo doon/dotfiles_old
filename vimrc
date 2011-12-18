@@ -62,12 +62,8 @@ map <Down>  :echo "Bad Doon: use j!"<cr>
 if has("statusline") && !&cp
 " Always display the status line
   set laststatus=2
-  set statusline=%f\ %m\ %r\ %y\ \ 
-  set statusline+=Line:%l/%L[%p%%]\ 
-  set statusline+=Col:%v\ 
-  set statusline+=Buf:#%n\ 
-  set statusline+=%=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-  set statusline+=%{&ff}]\ 
+  set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y\ Buf:#%n
+  set statusline+=%=%c,%l/%L\ %P\ 
   set statusline+=%{fugitive#statusline()}\ \ \ 
 endif
 
@@ -97,6 +93,7 @@ if exists("&relativenumber")
 else
   set number
 endif
+
 
 " allow background buffers w/o saving
 set hidden
