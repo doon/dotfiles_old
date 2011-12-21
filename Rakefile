@@ -21,7 +21,7 @@ task :install_zsh do |t|
   homedir = File.expand_path("~")
   mkdir("#{homedir}/.zsh") unless File.exists?("#{homedir}/.zsh")
 
-  ["zshrc","zlogin","zprofile", "aliases","screenrc", "inputrc", "gemrc"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
+  ["zshrc","zlogin","zprofile", "aliases","screenrc", "inputrc", "gemrc","dircolors"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
 task :install_irbrc do |t|
