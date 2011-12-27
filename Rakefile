@@ -35,6 +35,7 @@ task :update_vim_bundles do |t|
   git_bundles = [
     "git://github.com/tpope/vim-fugitive.git",
     "git://github.com/tpope/vim-rails.git",
+    "git://github.com/tpope/vim-surround.git",
     "git://github.com/altercation/vim-colors-solarized"
   ]
   rake_dir = Dir.getwd
