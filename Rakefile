@@ -36,7 +36,8 @@ task :update_vim_bundles do |t|
     "git://github.com/tpope/vim-fugitive.git",
     "git://github.com/tpope/vim-rails.git",
     "git://github.com/tpope/vim-surround.git",
-    "git://github.com/altercation/vim-colors-solarized"
+    "git://github.com/altercation/vim-colors-solarized",
+    "git://git.wincent.com/command-t.git"
   ]
   rake_dir = Dir.getwd
   bundles_dir = File.expand_path("~/.vim/bundle")
@@ -53,6 +54,10 @@ task :update_vim_bundles do |t|
     `git clone #{url} #{dir}`
     FileUtils.rm_rf(File.join(dir, ".git"))
   end
+
+  #build command-t stuff
+  FileUtils.cd(bundles_dir + "/command-t")
+  `rake make`
 
   puts "copying local bundles over"
   FileUtils.cp_r("#{rake_dir}/_vim_bundles/.", bundles_dir)
