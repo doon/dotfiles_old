@@ -8,8 +8,10 @@ call pathogen#infect()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set nobackup
-set nowritebackup
+" Store temporary files in a central spot
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backup
 set history=50    " keep 50 lines of command line history
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
