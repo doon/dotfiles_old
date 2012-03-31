@@ -37,7 +37,6 @@ task :update_vim_bundles do |t|
     "git://github.com/tpope/vim-rails.git",
     "git://github.com/tpope/vim-surround.git",
     "git://github.com/altercation/vim-colors-solarized",
-    "git://git.wincent.com/command-t.git",
     "git://github.com/kchmck/vim-coffee-script.git",
     "git://github.com/tsaleh/vim-align.git"
   ]
@@ -58,8 +57,8 @@ task :update_vim_bundles do |t|
   end
 
   #build command-t stuff
-  FileUtils.cd(bundles_dir + "/command-t")
-  `rake make`
+  #FileUtils.cd(bundles_dir + "/command-t")
+  #`rake make`
 
   puts "copying local bundles over"
   FileUtils.cp_r("#{rake_dir}/_vim_bundles/.", bundles_dir)
