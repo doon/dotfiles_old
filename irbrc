@@ -52,7 +52,7 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
   $console_extensions = []
 
   # awesome_print is prints prettier than pretty_print
-  extend_console 'ap' do
+  extend_console 'awesome_print' do
     alias pp ap
   end
 

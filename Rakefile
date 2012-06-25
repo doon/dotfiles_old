@@ -10,17 +10,10 @@ task :install_vim do |t|
   FileUtils.cp_r('./_vim/.',vimdir)
 end
 
-task :install_vcs do |t|
-  puts "Installing git/hg configs"
-  homedir = File.expand_path("~")
-  ["gitconfig","hgrc"].each {|vcfile| FileUtils.cp("./#{vcfile}","#{homedir}/.#{vcfile}") }
-end
-
 task :install_zsh do |t|
   puts "installing zsh stuff"
   homedir = File.expand_path("~")
   mkdir("#{homedir}/.zsh") unless File.exists?("#{homedir}/.zsh")
-
   ["zshrc","zlogin","zprofile", "aliases","screenrc", "inputrc", "gemrc","dircolors"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
@@ -55,10 +48,6 @@ task :update_vim_bundles do |t|
     `git clone #{url} #{dir}`
     FileUtils.rm_rf(File.join(dir, ".git"))
   end
-
-  #build command-t stuff
-  #FileUtils.cd(bundles_dir + "/command-t")
-  #`rake make`
 
   puts "copying local bundles over"
   FileUtils.cp_r("#{rake_dir}/_vim_bundles/.", bundles_dir)
