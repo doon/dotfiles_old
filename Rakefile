@@ -10,10 +10,18 @@ task :install_vim do |t|
   FileUtils.cp_r('./_vim/.',vimdir)
 end
 
+task :install_vcs do |t|
+    puts "Installing git/hg configs"
+      homedir = File.expand_path("~")
+        ["gitconfig","hgrc"].each {|vcfile| FileUtils.cp("./#{vcfile}","#{homedir}/.#{vcfile}") }
+end
+
 task :install_zsh do |t|
   puts "installing zsh stuff"
   homedir = File.expand_path("~")
-  mkdir("#{homedir}/.zsh") unless File.exists?("#{homedir}/.zsh")
+  dot_zsh =File.join(homedir,".zsh")
+  mkdir(dot_zsh) unless File.exists?(dot_zsh)
+
   ["zshrc","zlogin","zprofile", "aliases","screenrc", "inputrc", "gemrc","dircolors"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
