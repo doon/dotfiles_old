@@ -56,7 +56,6 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
     alias pp ap
   end
 
-
   extend_console 'wirb' do
     Wirb.start
   end
@@ -76,6 +75,9 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
 
   # When you're using Rails 3 console, show queries in the console
   extend_console 'rails3', defined?(ActiveSupport::Notifications), false do
+    # silence ActiveRecords logging of sql to console, and use the notifications ones below
+    # avoids duplicate queries being printed
+    ActiveRecord::Base.logger.level = 1
     $odd_or_even_queries = false
     ActiveSupport::Notifications.subscribe('sql.active_record') do |*args|
       $odd_or_even_queries = !$odd_or_even_queries
@@ -121,6 +123,7 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
       data.size
     end
   end
+
   extend_console 'bond' do
     Bond.start
   end
