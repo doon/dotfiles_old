@@ -74,12 +74,6 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
     Wirble.colorize
   end
 
-  # When you're using Rails 2 console, show queries in the console
-  extend_console 'rails2', (ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')), false do
-    require 'logger'
-    RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
-  end
-
   # When you're using Rails 3 console, show queries in the console
   extend_console 'rails3', defined?(ActiveSupport::Notifications), false do
     $odd_or_even_queries = false
