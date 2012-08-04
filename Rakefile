@@ -2,6 +2,7 @@ require 'rake'
 
 task :default => [:install_vim, :install_zsh, :install_vcs, :install_irbrc, :update_vim_bundles ]
 
+desc 'Install Vim Configs'
 task :install_vim do |t|
   vimdir = File.expand_path("~/.vim")
   homedir = File.expand_path("~")
@@ -10,12 +11,14 @@ task :install_vim do |t|
   FileUtils.cp_r('./_vim/.',vimdir)
 end
 
+desc 'Install VCS type stuff'
 task :install_vcs do |t|
     puts "Installing git/hg configs"
       homedir = File.expand_path("~")
         ["gitconfig","hgrc"].each {|vcfile| FileUtils.cp("./#{vcfile}","#{homedir}/.#{vcfile}") }
 end
 
+desc 'Install zsh related stuff'
 task :install_zsh do |t|
   puts "installing zsh stuff"
   homedir = File.expand_path("~")
@@ -25,12 +28,14 @@ task :install_zsh do |t|
   ["zshrc","zlogin","zprofile", "aliases","screenrc", "inputrc", "gemrc","dircolors"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
+desc 'Install IRB Related Stuff'
 task :install_irbrc do |t|
   puts "installing irbrc"
   homedir = File.expand_path("~")
   FileUtils.cp("./irbrc","#{homedir}/.irbrc")
 end
 
+desc 'Update my vim bundles'
 task :update_vim_bundles do |t|
   #http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
   git_bundles = [
