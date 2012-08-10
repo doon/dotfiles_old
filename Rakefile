@@ -44,7 +44,8 @@ task :update_vim_bundles do |t|
     "git://github.com/tpope/vim-surround.git",
     "git://github.com/altercation/vim-colors-solarized",
     "git://github.com/kchmck/vim-coffee-script.git",
-    "git://github.com/tsaleh/vim-align.git"
+    "git://github.com/tsaleh/vim-align.git",
+    "git://github.com/tpope/vim-endwise.git"
   ]
   rake_dir = Dir.getwd
   bundles_dir = File.expand_path("~/.vim/bundle")
