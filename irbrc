@@ -51,7 +51,7 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
   end
   $console_extensions = []
 
-  # awesome_print is prints prettier than pretty_print
+  # awesome_print  prints prettier than pretty_print
   extend_console 'awesome_print' do
     alias pp ap
   end
@@ -64,13 +64,6 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
   extend_console 'hirb' do
     Hirb.enable
     extend Hirb::Console
-  end
-
-  # Wirble is a gem that handles coloring the IRB
-  # output and history
-  extend_console 'wirble' do
-    Wirble.init
-    Wirble.colorize
   end
 
   # When you're using Rails 3 console, show queries in the console
