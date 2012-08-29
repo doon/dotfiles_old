@@ -83,7 +83,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Color scheme
-colorscheme solarized
+colorscheme jellybeans
 set background=dark
 set t_Co=256
 "highlight NonText guibg=#060606
