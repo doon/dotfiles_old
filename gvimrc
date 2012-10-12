@@ -1,7 +1,8 @@
 " Font
 
 if has("gui_macvim")
-  set guifont=Mensch\ Regular:h12
+  "set guifont=Mensch\ Regular:h12
+  set guifont=Source\ Code\ Pro:h12
 elseif has("gui_gtk2")
   set guifont=Mensch\ 10
 endif
