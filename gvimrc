@@ -15,7 +15,7 @@ set guioptions-=T
 
 " Use console dialogs
 set guioptions+=c
-
+colorscheme vividchalk
 " Local config
 if filereadable(".gvimrc.local")
   source .gvimrc.local
