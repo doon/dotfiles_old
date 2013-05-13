@@ -47,6 +47,7 @@ if has("autocmd")
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
       \| exe "normal! g`\"" | endif
 
+  autocmd BufReadPost fugitive://* set bufhidden=delete
   augroup END
 endif
 
