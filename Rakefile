@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => [:install_vim, :install_zsh, :install_vcs, :install_irbrc, :update_vim_bundles, :install_tmux ]
+task :default => [:install_vim, :install_zsh, :install_vcs, :install_irbrc, :install_tmux, :update_vim_bundles]
 
 desc 'Install Vim Configs'
 task :install_vim do |t|
