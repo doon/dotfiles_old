@@ -1,7 +1,8 @@
 # makes color constants available
 autoload -U colors
 colors
-
+#include zmv
+autoload -U zmv
 # enable colored output from ls, etc
 export CLICOLOR=1
 
