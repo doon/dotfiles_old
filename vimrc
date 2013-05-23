@@ -57,12 +57,6 @@ set smarttab
 set expandtab
 set list listchars=tab:»·,trail:·
 
-" disable cursor keys in normal mode
-" #map <Left>  :echo "Bad Doon: use h!"<cr>
-"map <Right> :echo "Bad Doon: use l!"<cr>
-"map <Up>    :echo "Bad Doon: use k!"<cr>
-"map <Down>  :echo "Bad Doon: use j!"<cr>
-
 if has("statusline") && !&cp
 " Always display the status line
   set laststatus=2
@@ -84,12 +78,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Color scheme
-"colorscheme vividchalk
 colorscheme solarized
 set background=dark
 set t_Co=256
-"highlight NonText guibg=#060606
-"highlight Folded  guibg=#0A0A0A guifg=#9090D0
+let g:solarized_termtrans = 1
 
 " Numbers
 set numberwidth=4
@@ -132,6 +124,13 @@ augroup myfiletypes
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass set ai sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
 augroup END
+
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 "Local config
 if filereadable(".vimrc.local")
