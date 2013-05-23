@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => [:install_vim, :install_zsh, :install_vcs, :install_irbrc, :update_vim_bundles ]
+task :default => [:install_vim, :install_zsh, :install_vcs, :install_irbrc, :update_vim_bundles, :install_tmux ]
 
 desc 'Install Vim Configs'
 task :install_vim do |t|
@@ -33,6 +33,13 @@ task :install_irbrc do |t|
   puts "installing irbrc"
   homedir = File.expand_path("~")
   FileUtils.cp("./irbrc","#{homedir}/.irbrc")
+end
+
+desc 'install tmux stuff'
+task :install_tmux do |t|
+  puts "installing tmux"
+  homedir = File.expand_path("~")
+  FileUtils.cp("./tmux.conf", "#{homedir}/.tmux.conf")
 end
 
 desc 'Update my vim bundles'
