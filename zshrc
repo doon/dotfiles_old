@@ -21,6 +21,9 @@ case $TERM in
       ;;
 esac
 
+#match p macro in alfred
+function p { cd ~/projects/$1 }
+
 # automatically enter directories without cd
 setopt auto_cd
 
