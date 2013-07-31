@@ -11,6 +11,7 @@ set vb
 " No toolbar
 set guioptions-=T
 
+colorscheme vividchalk
 " Use console dialogs
 set guioptions+=c
 " Local config
