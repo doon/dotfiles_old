@@ -1,13 +1,12 @@
 [user]
   name = Patrick Muldoon
   email = doon@labratsoftware.com
-
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [alias]
   c = commit -m
   a = add
@@ -19,3 +18,5 @@
   st = status
   out = log origin..HEAD
   spush = svn dcommit
+[push]
+  default = simple
