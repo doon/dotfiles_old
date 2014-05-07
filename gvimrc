@@ -1,7 +1,6 @@
 " Font
 if has("gui_macvim")
-  "set guifont=Mensch\ Regular:h12
-  set guifont=Source\ Code\ Pro:h12
+  set guifont=Source\ Code\ Pro:h13
 elseif has("gui_gtk2")
   set guifont=Mensch\ 10
 endif
@@ -11,7 +10,6 @@ set vb
 " No toolbar
 set guioptions-=T
 
-colorscheme vividchalk
 " Use console dialogs
 set guioptions+=c
 " Local config
