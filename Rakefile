@@ -53,7 +53,6 @@ task :update_vim_bundles do |t|
     "git://github.com/kchmck/vim-coffee-script.git",
     "git://github.com/tsaleh/vim-align.git",
     "git://github.com/tpope/vim-endwise.git",
-    "git://github.com/nanotech/jellybeans.vim.git",
     "git://github.com/tpope/vim-vividchalk.git",
     "git://github.com/tpope/vim-unimpaired.git",
     "git://github.com/rking/ag.vim",
