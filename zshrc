@@ -23,6 +23,7 @@ esac
 
 #match p macro in alfred
 function p { cd ~/projects/$1 }
+compctl -/ -W ~/projects p
 
 # automatically enter directories without cd
 setopt auto_cd
