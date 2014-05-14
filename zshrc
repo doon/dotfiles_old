@@ -22,8 +22,10 @@ case $TERM in
 esac
 
 #match p macro in alfred
-function p { cd ~/projects/$1 }
-compctl -/ -W ~/projects p
+if [ -d ~/projects ]; then
+  function p { cd ~/projects/$1 }
+  compctl -/ -W ~/projects p
+fi
 
 # automatically enter directories without cd
 setopt auto_cd
@@ -40,7 +42,7 @@ fi
 bindkey -e
 
 # use incremental search
-bindkey ^R ^R ^R history-incremental-search-backward
+bindkey '^R' '^R' '^R' history-incremental-search-backward
 
 # ignore duplicate history entries
 setopt histignoredups
