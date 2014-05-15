@@ -78,10 +78,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Color scheme
-colorscheme solarized
+colorscheme hybrid
 set background=dark
 set t_Co=256
-let g:solarized_termtrans = 1
+" let g:solarized_termtrans = 1
 
 " Numbers
 set numberwidth=4
