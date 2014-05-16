@@ -65,9 +65,6 @@ if has("statusline") && !&cp
   set statusline+=%{fugitive#statusline()}\ \ \ 
 endif
 
-" , is the leader character
-let mapleader = ","
-
 " No Help, please
 nmap <F1> <Esc>
 
@@ -78,10 +75,9 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Color scheme
-colorscheme hybrid
-set background=dark
 set t_Co=256
-" let g:solarized_termtrans = 1
+let g:hybrid_use_iTerm_colors = 1
+colorscheme hybrid
 
 " Numbers
 set numberwidth=4
@@ -90,7 +86,6 @@ if exists("&relativenumber")
 else
   set number
 endif
-
 
 " allow background buffers w/o saving
 set hidden
