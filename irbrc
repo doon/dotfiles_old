@@ -66,8 +66,8 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
     extend Hirb::Console
   end
 
-  # When you're using Rails 3 console, show queries in the console
-  extend_console 'rails3', defined?(ActiveSupport::Notifications), false do
+  # When you're using Rails console, show queries in the console
+  extend_console 'rails', defined?(ActiveSupport::Notifications), false do
     # silence ActiveRecords logging of sql to console, and use the notifications ones below
     # avoids duplicate queries being printed
     ActiveRecord::Base.logger.level = 1
