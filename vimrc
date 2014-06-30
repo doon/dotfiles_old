@@ -55,14 +55,14 @@ endif
 set tabstop=2 shiftwidth=2
 set smarttab
 set expandtab
-set list listchars=tab:»·,trail:·
+set list listchars=tab:»·,trail:
 
 if has("statusline") && !&cp
 " Always display the status line
   set laststatus=2
   set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y\ Buf:#%n
-  set statusline+=%=%c,%l/%L\ %P\ 
-  set statusline+=%{fugitive#statusline()}\ \ \ 
+  set statusline+=%=%c,%l/%L\ %P\
+  set statusline+=%{fugitive#statusline()}\ \ \
 endif
 
 " No Help, please

@@ -59,7 +59,9 @@ task :update_vim_bundles do |t|
     "git://github.com/vim-ruby/vim-ruby.git",
     "git://github.com/tpope/vim-bundler.git",
     "git://github.com/vim-scripts/dbext.vim",
-    "git://github.com/w0ng/vim-hybrid.git"
+    "git://github.com/w0ng/vim-hybrid.git",
+    "git://github.com/bling/vim-airline",
+    "git://github.com/airblade/vim-gitgutter.git"
   ]
   rake_dir = Dir.getwd
   bundles_dir = File.expand_path("~/.vim/bundle")
