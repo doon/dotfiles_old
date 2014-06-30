@@ -55,7 +55,7 @@ endif
 set tabstop=2 shiftwidth=2
 set smarttab
 set expandtab
-set list listchars=tab:»·,trail:
+set list listchars=tab:»·,trail:·
 
 if has("statusline") && !&cp
 " Always display the status line
