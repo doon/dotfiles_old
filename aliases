@@ -1,9 +1,3 @@
-alias migrate="rake db:migrate db:test:prepare"
-alias remigrate="rake db:migrate && rake db:migrate:redo && rake db:schema:dump db:test:prepare"
-alias gadd="git add -u && git add . && git status"
-alias svnprecommit="git svn rebase && rake features && rake test"
-alias hgprecommit="hg pull && rake features && rake test"
-alias cuc="cucumber -r features"
 alias g="git"
 alias gps='ps auxwww | grep -v grep | grep'
 alias ll='ls -l'
@@ -12,18 +6,13 @@ if [ `uname ` = 'Linux' ];then
 fi
 alias ipcalc='ipcalc -b'
 alias gst='git status'
-alias gl='git pull'
-alias gp='git push'
-alias gd='git diff'
-alias gc='git commit -v'
-alias gca='git commit -v -a'
-alias gb='git branch'
-alias gba='git branch -a'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-#try to alias vi to vim on boxes where they are different FBSD|OSX 
+alias mmv='noglob zmv -W'
+
+#try to alias vi to vim on boxes where they are different FBSD|OSX
 if [[ -x /usr/local/bin/vim ]]; then
   alias vi="/usr/local/bin/vim"
 elif [[ -x /usr/local/bin/mvim ]]; then
