@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => [:install_vim, :install_zsh, :install_irbrc, :install_tmux, :update_vim_bundles]
+task :default => [:install_vim, :install_shell, :install_irbrc, :install_tmux, :update_vim_bundles]
 
 desc 'Install Vim Configs'
 task :install_vim do |t|
@@ -18,14 +18,14 @@ task :install_vcs do |t|
         ["gitconfig"].each {|vcfile| FileUtils.cp("./#{vcfile}","#{homedir}/.#{vcfile}") }
 end
 
-desc 'Install zsh related stuff'
-task :install_zsh do |t|
+desc 'Install shell related stuff'
+task :install_shell do |t|
   puts "installing zsh stuff"
   homedir = File.expand_path("~")
   dot_zsh =File.join(homedir,".zsh")
   mkdir(dot_zsh) unless File.exists?(dot_zsh)
 
-  ["zshrc","zlogin","zprofile", "aliases","screenrc", "inputrc", "gemrc","dircolors"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
+  ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
 desc 'Install IRB Related Stuff'
