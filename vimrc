@@ -8,6 +8,8 @@ call pathogen#infect()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+let mapleader = ","
+
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -113,7 +115,8 @@ noremap <leader>yy "*Y
 
 " Preserve indentation while pasting text from the OS X clipboard
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-
+" cleanup whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 "Local config
 if filereadable(".vimrc.local")
   source .vimrc.local
