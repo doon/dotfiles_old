@@ -21,6 +21,7 @@ set incsearch     " do incremental searching
 set ignorecase    " ignore case when searching
 set smartcase     " unless we have at least 1 cap
 set title         " set our title when running in term
+set showmatch
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
