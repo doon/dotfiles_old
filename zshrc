@@ -78,7 +78,7 @@ setopt no_hist_beep
 setopt hist_save_no_dups
 
 if [[ -d /usr/local/share/npm/bin ]]; then PATH=/usr/local/share/npm/bin:$PATH; fi
-PATH=./bin:/usr/local/bin:~/bin:$PATH;
+PATH=/usr/local/bin:~/bin:$PATH;
 export PATH
 # expand functions in the prompt
 setopt prompt_subst

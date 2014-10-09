@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => [:install_vim, :install_shell, :install_irbrc, :install_tmux, :update_vim_bundles]
+task :default => [:install_vim, :install_shell, :install_irbrc, :install_tmux, :update_vim_bundles, :install_postgres]
 
 desc 'Install Vim Configs'
 task :install_vim do |t|
@@ -26,6 +26,15 @@ task :install_shell do |t|
   mkdir(dot_zsh) unless File.exists?(dot_zsh)
 
   ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors", "telnetrc"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
+end
+
+desc 'Install postgres Related Stuff'
+task :install_postgres do |t|
+  puts "installing postgres stuff.."
+  homedir = File.expand_path("~")
+  dot_psql = File.join(homedir,".psql")
+  mkdir(dot_psql) unless File.exists?(dot_psql)
+  FileUtils.cp("./psqlrc",File.join(homedir,".psqlrc"))
 end
 
 desc 'Install IRB Related Stuff'
