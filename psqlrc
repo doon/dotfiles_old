@@ -1,3 +1,4 @@
 \set ON_ERROR_ROLLBACK interactive
 \set HISTFILE ~/.psql/history- :DBNAME
-\x ON
+\x AUTO
+\pset null ¤
