@@ -34,7 +34,7 @@ task :install_postgres do |t|
   homedir = File.expand_path("~")
   dot_psql = File.join(homedir,".psql")
   mkdir(dot_psql) unless File.exists?(dot_psql)
-  FileUtils.cp("./psqlrc",File.join(homedir,".psqlrc"))
+  FileUtils.cp("psqlrc",File.join(homedir,".psqlrc"))
 end
 
 desc 'Install IRB Related Stuff'
@@ -87,5 +87,7 @@ task :update_vim_bundles do |t|
     `git clone #{url} #{dir}`
     FileUtils.rm_rf(File.join(dir, ".git"))
   end
+  #send us back to the current dir
+  FileUtils.cd(rake_dir)
 
 end
