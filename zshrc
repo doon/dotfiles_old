@@ -28,8 +28,8 @@ fi
 #put directory in titlebar
 case $TERM in
       *xterm*|ansi)
-         function settab { print -Pn "\e]1; %~\a" }
-         function settitle { print -Pn "\e]2; %~\a" }
+         function settab { print -Pn "\e]1;${SSH_CONNECTION+"%n@%m:"} %~\a" }
+         function settitle { print -Pn "\e]2;${SSH_CONNECTION+"%n@%m:"} %~\a" }
          function chpwd { settab;settitle }
          settab;settitle
       ;;
