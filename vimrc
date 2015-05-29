@@ -102,6 +102,9 @@ set complete=.,t
 " set the command height
 set cmdheight=2
 
+" include gem tags
+set tags+=gems.tags
+
 augroup myfiletypes
   "clear old autocmds in group
   autocmd!
