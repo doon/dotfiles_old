@@ -35,11 +35,23 @@ case $TERM in
       ;;
 esac
 
-#match p macro in alfred
 if [ -d ~/projects ]; then
   function p { cd ~/projects/$1 }
   compctl -/ -W ~/projects p
 fi
+
+# No arguments: `git status`
+# # With arguments: acts like `git`
+g() {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
+
+# Complete g like git
+compdef g=git
 
 # automatically enter directories without cd
 setopt auto_cd
