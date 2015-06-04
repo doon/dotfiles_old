@@ -8,7 +8,7 @@ call pathogen#infect()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -30,7 +30,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
   " Press Space to turn off highlighting and clear any message already
   " displayed.
-   :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+   :nnoremap <leader> <leader> :nohlsearch<Bar>:echo<CR>
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -116,9 +116,9 @@ augroup END
 " Yank text to the OS X clipboard
 noremap <leader>y "*y
 noremap <leader>yy "*Y
-
-" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>d "*d
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
 " cleanup whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 "Local config
