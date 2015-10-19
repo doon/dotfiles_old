@@ -80,7 +80,9 @@ nnoremap <c-l> <c-w>l
 " Color scheme
 set t_Co=256
 let g:hybrid_use_iTerm_colors = 1
+set background=dark
 colorscheme hybrid
+
 
 " Numbers
 set numberwidth=4
