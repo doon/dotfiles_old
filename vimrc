@@ -77,8 +77,6 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" ; instead of :
-nnoremap ; :
 " Color scheme
 set t_Co=256
 let g:hybrid_use_iTerm_colors = 1
