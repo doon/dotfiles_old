@@ -70,7 +70,8 @@ task :update_vim_bundles do |t|
     "git://github.com/w0ng/vim-hybrid.git",
     "git://github.com/bling/vim-airline",
     "git://github.com/airblade/vim-gitgutter.git",
-    "git://github.com/elixir-lang/vim-elixir.git"
+    "git://github.com/elixir-lang/vim-elixir.git",
+    "git://github.com/rust-lang/rust.vim.git"
   ]
   git_bundles << "git://github.com/rizzatti/dash.vim.git" if   (/darwin/ =~ RUBY_PLATFORM)
   rake_dir = Dir.getwd

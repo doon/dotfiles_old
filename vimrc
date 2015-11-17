@@ -120,7 +120,8 @@ noremap <leader>y "*y
 noremap <leader>yy "*Y
 noremap <leader>d "*d
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '~/.cargo/bin/rustfmt'
 " cleanup whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 "Local config
