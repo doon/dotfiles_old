@@ -71,12 +71,6 @@ endif
 " No Help, please
 nmap <F1> <Esc>
 
-" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
 " Color scheme
 set t_Co=256
 let g:hybrid_use_iTerm_colors = 1
@@ -127,8 +121,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-  " Hack to get C-h working in neovim
-  nmap <BS> <C-W>h
   tnoremap <Esc> <C-\><C-n>
 endif
 
