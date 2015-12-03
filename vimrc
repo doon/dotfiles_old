@@ -124,6 +124,11 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_command = '~/.cargo/bin/rustfmt'
 " cleanup whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
+
 "Local config
 if filereadable(".vimrc.local")
   source .vimrc.local
