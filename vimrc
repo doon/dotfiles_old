@@ -126,6 +126,9 @@ let g:rustfmt_command = '~/.cargo/bin/rustfmt'
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 if has('nvim')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  " Hack to get C-h working in neovim
+  nmap <BS> <C-W>h
   tnoremap <Esc> <C-\><C-n>
 endif
 
