@@ -35,10 +35,6 @@ case $TERM in
       ;;
 esac
 
-if [ -d ~/projects ]; then
-  function p { cd ~/projects/$1 }
-  compctl -/ -W ~/projects p
-fi
 
 # No arguments: `git status`
 # # With arguments: acts like `git`
@@ -62,6 +58,16 @@ export EDITOR=vim
 # aliases
 if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
+fi
+
+if [ -d ~/projects ]; then
+  function p { cd ~/projects/$1 }
+  compctl -/ -W ~/projects p
+fi
+
+if [ -d ~/.vim/sessions ] ; then 
+  function v { cd ~/projects/$1 && vi -S ~/.vim/sessions/$1 }
+  compctl -f -W ~/.vim/sessions v
 fi
 
 # emacs mode
