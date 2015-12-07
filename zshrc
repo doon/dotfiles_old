@@ -111,5 +111,5 @@ zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{
 zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
 precmd () { vcs_info }
 RPROMPT='${vcs_info_msg_0_}%f'
-
+if [[ -s  /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] ; then  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ; fi
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
