@@ -58,20 +58,20 @@ task :update_vim_bundles do |t|
     "git://github.com/tpope/vim-fugitive.git",
     "git://github.com/tpope/vim-rails.git",
     "git://github.com/tpope/vim-surround.git",
-    "git://github.com/altercation/vim-colors-solarized",
-    "git://github.com/kchmck/vim-coffee-script.git",
-    "git://github.com/tsaleh/vim-align.git",
+    "git://github.com/tpope/vim-repeat.git",
     "git://github.com/tpope/vim-endwise.git",
     "git://github.com/tpope/vim-vividchalk.git",
     "git://github.com/tpope/vim-unimpaired.git",
+    "git://github.com/tpope/vim-bundler.git",
+    "git://github.com/altercation/vim-colors-solarized",
+    "git://github.com/kchmck/vim-coffee-script.git",
+    "git://github.com/tsaleh/vim-align.git",
     "git://github.com/rking/ag.vim",
     "git://github.com/vim-ruby/vim-ruby.git",
-    "git://github.com/tpope/vim-bundler.git",
     "git://github.com/w0ng/vim-hybrid.git",
     "git://github.com/bling/vim-airline",
     "git://github.com/airblade/vim-gitgutter.git",
-    "git://github.com/elixir-lang/vim-elixir.git",
-    "git://github.com/rust-lang/rust.vim.git"
+    "git://github.com/elixir-lang/vim-elixir.git"
   ]
   git_bundles << "git://github.com/rizzatti/dash.vim.git" if   (/darwin/ =~ RUBY_PLATFORM)
   rake_dir = Dir.getwd
