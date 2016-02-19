@@ -25,7 +25,7 @@ task :install_shell do |t|
   dot_zsh =File.join(homedir,".zsh")
   mkdir(dot_zsh) unless File.exists?(dot_zsh)
 
-  ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors", "telnetrc"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
+  ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors", "telnetrc", "iterm.zsh"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
 desc 'Install postgres Related Stuff'

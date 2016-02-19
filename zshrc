@@ -60,6 +60,10 @@ if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
+if [ -e "$HOME/.iterm.zsh" ]; then
+  source "$HOME/.iterm.zsh"
+fi
+
 if [ -d ~/projects ]; then
   function p { cd ~/projects/$1 }
   compctl -/ -W ~/projects p
