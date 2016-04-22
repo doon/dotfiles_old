@@ -52,8 +52,8 @@ compdef g=git
 # automatically enter directories without cd
 setopt auto_cd
 
-# use vim as an editor
-export EDITOR=vim
+# use vi (aliased) for editor
+export EDITOR=vi
 
 # aliases
 if [ -e "$HOME/.aliases" ]; then
