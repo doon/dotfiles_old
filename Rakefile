@@ -21,17 +21,20 @@ end
 desc 'Install shell related stuff'
 task :install_shell do |t|
   puts "installing zsh stuff"
-  homedir = File.expand_path("~")
-  dot_zsh =File.join(homedir,".zsh")
+  homedir   = File.expand_path("~")
+  dot_zsh   = File.join(homedir,".zsh")
+  dot_iterm = File.join(homedir,".iterm2")
   mkdir(dot_zsh) unless File.exists?(dot_zsh)
+  mkdir(dot_iterm) unless File.exists?(dot_iterm)
 
   ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors", "telnetrc", "iterm.zsh"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
+  FileUtils.cp_r('./_iterm2/.',dot_iterm)
 end
 
 desc 'Install postgres Related Stuff'
 task :install_postgres do |t|
   puts "installing postgres stuff.."
-  homedir = File.expand_path("~")
+  homedir  = File.expand_path("~")
   dot_psql = File.join(homedir,".psql")
   mkdir(dot_psql) unless File.exists?(dot_psql)
   FileUtils.cp("psqlrc",File.join(homedir,".psqlrc"))
@@ -71,10 +74,11 @@ task :update_vim_bundles do |t|
     "git://github.com/w0ng/vim-hybrid.git",
     "git://github.com/bling/vim-airline",
     "git://github.com/airblade/vim-gitgutter.git",
-    "git://github.com/elixir-lang/vim-elixir.git"
+    "git://github.com/elixir-lang/vim-elixir.git",
+    "git://github.com/rust-lang/rust.vim.git"
   ]
-  git_bundles << "git://github.com/rizzatti/dash.vim.git" if   (/darwin/ =~ RUBY_PLATFORM)
-  rake_dir = Dir.getwd
+  git_bundles << "git://github.com/rizzatti/dash.vim.git" if (/darwin/ =~ RUBY_PLATFORM)
+  rake_dir    = Dir.getwd
   bundles_dir = File.expand_path("~/.vim/bundle")
   mkdir(bundles_dir) unless File.exists?(bundles_dir)
 
@@ -85,7 +89,7 @@ task :update_vim_bundles do |t|
 
   git_bundles.each do |url|
     dir = url.split('/').last.sub(/\.git$/, '')
-    puts "  Unpacking #{url} into #{dir}"
+    puts " Unpacking #{url} into #{dir}"
     `git clone #{url} #{dir}`
     FileUtils.rm_rf(File.join(dir, ".git"))
   end
