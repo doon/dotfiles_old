@@ -46,6 +46,16 @@ g() {
   fi
 }
 
+# no arguments: `screen -x -R` (connect to first screen or create new
+# with arguments act like screen
+s() {
+  if [[ $# > 0 ]]; then
+    screen $@
+  else
+    screen -x -R
+  fi
+}
+
 # Complete g like git
 compdef g=git
 
@@ -69,7 +79,7 @@ if [ -d ~/projects ]; then
   compctl -/ -W ~/projects p
 fi
 
-if [ -d ~/.vim/sessions ] ; then 
+if [ -d ~/.vim/sessions ] ; then
   function v { cd ~/projects/$1 && vi -S ~/.vim/sessions/$1 }
   compctl -f -W ~/.vim/sessions v
 fi
