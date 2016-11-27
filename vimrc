@@ -30,7 +30,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
   " Press Space to turn off highlighting and clear any message already
   " displayed.
-   :nnoremap <leader> <leader> :nohlsearch<Bar>:echo<CR>
+  :nnoremap <leader> <leader> :nohlsearch<Bar>:echo<CR>
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -39,18 +39,25 @@ if has("autocmd")
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
-  au!
+    au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
 
-  " treat json as javascript
-  au BufNewFile,BufRead *.json set ft=javascript
-  " go to last edit in file unless it is a git commit message
-  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-      \| exe "normal! g`\"" | endif
+    " treat json as javascript
+    au BufNewFile,BufRead *.json set ft=javascript
+    " go to last edit in file unless it is a git commit message
+    au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+          \| exe "normal! g`\"" | endif
 
-  autocmd BufReadPost fugitive://* set bufhidden=delete
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+  augroup END
+  augroup myfiletypes
+    "clear old autocmds in group
+    autocmd!
+    "for ruby, autoindent with two spaces, always expand tabs
+    autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass set ai sw=2 sts=2 et
+    autocmd FileType python set sw=4 sts=4 et
   augroup END
 endif
 
@@ -61,7 +68,7 @@ set expandtab
 set list listchars=tab:»·,trail:·
 
 if has("statusline") && !&cp
-" Always display the status line
+  " Always display the status line
   set laststatus=2
   set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y\ Buf:#%n
   set statusline+=%=%c,%l/%L\ %P\
@@ -101,14 +108,6 @@ set cmdheight=2
 " include gem tags
 set tags+=gems.tags
 
-augroup myfiletypes
-  "clear old autocmds in group
-  autocmd!
-  "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass set ai sw=2 sts=2 et
-  autocmd FileType python set sw=4 sts=4 et
-augroup END
-
 " Yank text to the OS X clipboard
 noremap <leader>y "*y
 noremap <leader>yy "*Y
@@ -118,6 +117,10 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_command = '~/.cargo/bin/rustfmt'
 " cleanup whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" avoid escape
+inoremap jk <Esc>
+inoremap kj <Esc>
 
 if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
