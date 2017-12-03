@@ -23,12 +23,9 @@ task :install_shell do |t|
   puts "installing zsh stuff"
   homedir   = File.expand_path("~")
   dot_zsh   = File.join(homedir,".zsh")
-  dot_iterm = File.join(homedir,".iterm2")
   mkdir(dot_zsh) unless File.exists?(dot_zsh)
-  mkdir(dot_iterm) unless File.exists?(dot_iterm)
 
-  ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors", "telnetrc", "iterm.zsh"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
-  FileUtils.cp_r('./_iterm2/.',dot_iterm)
+  ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors", "telnetrc"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
 desc 'Install postgres Related Stuff'
@@ -56,7 +53,6 @@ end
 
 desc 'Update my vim bundles'
 task :update_vim_bundles do |t|
-  #http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
   git_bundles = [
     "git://github.com/tpope/vim-fugitive.git",
     "git://github.com/tpope/vim-rails.git",
