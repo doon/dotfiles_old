@@ -1,9 +1,15 @@
-" Use Vim settings, rather then Vi settings (much better!).
-set nocompatible
+packadd minpac
+
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('tsaleh/vim-align')
+call minpac#add('w0ng/vim-hybrid')
+call minpac#add('bling/vim-airline')
 " default to utf-8
 set encoding=utf-8
-" load pathogen
-call pathogen#infect()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -113,19 +119,12 @@ noremap <leader>y "*y
 noremap <leader>yy "*Y
 noremap <leader>d "*d
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = '~/.cargo/bin/rustfmt'
 " cleanup whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " avoid escape
 inoremap jk <Esc>
 inoremap kj <Esc>
-
-if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-  tnoremap <Esc> <C-\><C-n>
-endif
 
 "Local config
 if filereadable(".vimrc.local")

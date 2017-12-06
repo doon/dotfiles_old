@@ -1,14 +1,27 @@
 require 'rake'
+require 'fileutils'
 
-task :default => [:install_vim, :install_shell, :install_irbrc, :install_tmux, :update_vim_bundles, :install_postgres]
+task :default => [:install_vim, :install_shell, :install_irbrc, :install_tmux ]
 
 desc 'Install Vim Configs'
 task :install_vim do |t|
-  vimdir = File.expand_path("~/.vim")
-  homedir = File.expand_path("~")
+  homedir = File.expand_path "~"
+  minpac = File.join homedir,".vim", "pack", "minpac", "opt"
+  minpac_plug = File.join minpac, "minpac" 
+	vimrc_src = File.join File.dirname(__FILE__), "vimrc"
+	vimrc_dst = File.join homedir,".vimrc"
+
+  # make sure that minipac exists
+  FileUtils::mkdir_p minpac
+
+  # if minipac doesn't exist, install it
+  unless File.exists? minpac_plug
+		FileUtils.cd minpac
+		`git clone https://github.com/k-takata/minpac.git`
+	end
+
   puts "copying vim files"
-  ["vimrc","gvimrc"].each {|v| FileUtils.cp("./#{v}","#{homedir}/.#{v}") }
-  FileUtils.cp_r('./_vim/.',vimdir)
+  FileUtils.cp vimrc_src, vimrc_dst
 end
 
 desc 'Install VCS type stuff'
@@ -25,7 +38,7 @@ task :install_shell do |t|
   dot_zsh   = File.join(homedir,".zsh")
   mkdir(dot_zsh) unless File.exists?(dot_zsh)
 
-  ["zshrc","aliases","screenrc", "inputrc", "gemrc","dircolors", "telnetrc"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
+  ["zshrc","aliases","inputrc", "gemrc","dircolors"].each { |zfile| FileUtils.cp(zfile,"#{homedir}/.#{zfile}") }
 end
 
 desc 'Install postgres Related Stuff'
@@ -49,47 +62,4 @@ task :install_tmux do |t|
   puts "installing tmux"
   homedir = File.expand_path("~")
   FileUtils.cp("./tmux.conf", "#{homedir}/.tmux.conf")
-end
-
-desc 'Update my vim bundles'
-task :update_vim_bundles do |t|
-  git_bundles = [
-    "git://github.com/tpope/vim-fugitive.git",
-    "git://github.com/tpope/vim-rails.git",
-    "git://github.com/tpope/vim-surround.git",
-    "git://github.com/tpope/vim-repeat.git",
-    "git://github.com/tpope/vim-endwise.git",
-    "git://github.com/tpope/vim-vividchalk.git",
-    "git://github.com/tpope/vim-unimpaired.git",
-    "git://github.com/tpope/vim-bundler.git",
-    "git://github.com/altercation/vim-colors-solarized",
-    "git://github.com/kchmck/vim-coffee-script.git",
-    "git://github.com/tsaleh/vim-align.git",
-    "git://github.com/rking/ag.vim",
-    "git://github.com/vim-ruby/vim-ruby.git",
-    "git://github.com/w0ng/vim-hybrid.git",
-    "git://github.com/bling/vim-airline",
-    "git://github.com/airblade/vim-gitgutter.git",
-    "git://github.com/elixir-lang/vim-elixir.git",
-    "git://github.com/rust-lang/rust.vim.git"
-  ]
-  git_bundles << "git://github.com/rizzatti/dash.vim.git" if (/darwin/ =~ RUBY_PLATFORM)
-  rake_dir    = Dir.getwd
-  bundles_dir = File.expand_path("~/.vim/bundle")
-  mkdir(bundles_dir) unless File.exists?(bundles_dir)
-
-  FileUtils.cd(bundles_dir)
-
-  puts "Trashing everything (lookout!)"
-  Dir["*"].each {|d| FileUtils.rm_rf d }
-
-  git_bundles.each do |url|
-    dir = url.split('/').last.sub(/\.git$/, '')
-    puts " Unpacking #{url} into #{dir}"
-    `git clone #{url} #{dir}`
-    FileUtils.rm_rf(File.join(dir, ".git"))
-  end
-  #send us back to the current dir
-  FileUtils.cd(rake_dir)
-
 end

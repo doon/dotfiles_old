@@ -46,16 +46,6 @@ g() {
   fi
 }
 
-# no arguments: `screen -x -R` (connect to first screen or create new
-# with arguments act like screen
-s() {
-  if [[ $# > 0 ]]; then
-    screen $@
-  else
-    screen -x -R
-  fi
-}
-
 # Complete g like git
 compdef g=git
 
@@ -69,21 +59,6 @@ export EDITOR=vi
 if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
-
-if [ -e "$HOME/.iterm.zsh" ]; then
-  source "$HOME/.iterm.zsh"
-fi
-
-if [ -d ~/projects ]; then
-  function p { cd ~/projects/$1 }
-  compctl -/ -W ~/projects p
-fi
-
-if [ -d ~/.vim/sessions ] ; then
-  function v { cd ~/projects/$1 && vi -S ~/.vim/sessions/$1 }
-  compctl -f -W ~/.vim/sessions v
-fi
-
 # emacs mode
 bindkey -e
 
@@ -125,5 +100,3 @@ zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{
 zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
 precmd () { vcs_info }
 RPROMPT='${vcs_info_msg_0_}%f'
-if [[ -s  /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] ; then  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ; fi
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
