@@ -5,16 +5,44 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 
 call minpac#add('tpope/vim-unimpaired')
 call minpac#add('tpope/vim-fugitive')
+call minpac#add('tpope/vim-endwise')
 call minpac#add('tsaleh/vim-align')
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('lifepillar/vim-solarized8')
 call minpac#add('rust-lang/rust.vim')
+call minpac#add('vim-ruby/vim-ruby')
 
 " default to utf-8
 set encoding=utf-8
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
+if has("autocmd")
+  filetype plugin indent on
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+    au!
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
+
+    " treat json as javascript
+    au BufNewFile,BufRead *.json set ft=javascript
+
+    " go to last edit in file unless it is a git commit message
+    au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+          \| exe "normal! g`\"" | endif
+
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+  augroup END
+  augroup myfiletypes
+    "clear old autocmds in group
+    autocmd!
+    "for ruby, autoindent with two spaces, always expand tabs
+    autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass set ai sw=2 sts=2 et
+    autocmd FileType python set sw=4 sts=4 et
+  augroup END
+endif
 
 let mapleader = "\<Space>"
 
@@ -73,7 +101,6 @@ set complete=.,t
 
 " set the command height
 set cmdheight=2
-
 
 " cleanup whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
